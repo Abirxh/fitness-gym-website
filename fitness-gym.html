@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitZone - Modern Fitness Gym</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #ff6b35;
+            --secondary-color: #004e89;
+            --dark-bg: #0a0e27;
+            --light-text: #ffffff;
+            --gray-text: #b0b0b0;
+            --accent-color: #f7a600;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--light-text);
+            background-color: var(--dark-bg);
+        }
+
+        /* Navigation */
+        nav {
+            background-color: rgba(10, 14, 39, 0.95);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--dark-bg) 100%);
+            padding: 8rem 2rem;
+            text-align: center;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
+            opacity: 0.1;
+        }
+
+        .hero .container {
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--light-text);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--gray-text);
+            margin-bottom: 2rem;
+            animation: slideUp 0.8s ease-out 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            animation: slideUp 0.8s ease-out 0.4s both;
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .cta-secondary {
+            display: inline-block;
+            color: var(--light-text);
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .cta-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            border-color: var(--primary-color);
+        }
+
+        .hero-subtitle {
+            color: var(--accent-color);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .hero-metrics {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .hero-metrics div {
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .hero-metrics strong {
+            display: block;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.35rem;
+        }
+
+        .hero-metrics span {
+            color: var(--gray-text);
+            font-size: 0.95rem;
+        }
+
+        nav ul li a {
+            padding: 0.6rem 1rem;
+            border-radius: 999px;
+        }
+
+        nav .logo {
+            font-size: 1.7rem;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 2rem;
+            background-color: var(--dark-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--light-text);
+        }
+
+        .section-title span {
+            color: var(--primary-color);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, rgba(0, 78, 137, 0.1), rgba(255, 107, 53, 0.1));
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--light-text);
+        }
+
+        .service-card p {
+            color: var(--gray-text);
+            line-height: 1.8;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, rgba(0, 78, 137, 0.05), rgba(10, 14, 39, 0.8));
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial-card p {
+            color: var(--gray-text);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .author-info h4 {
+            margin-bottom: 0.3rem;
+            color: var(--light-text);
+        }
+
+        .author-info p {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .stars {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.08), rgba(10, 14, 39, 0.95));
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--accent-color);
+            box-shadow: 0 20px 40px rgba(247, 166, 0, 0.2);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.75rem;
+            color: var(--light-text);
+        }
+
+        .price-tag {
+            font-size: 3rem;
+            margin: 1rem 0;
+            color: var(--primary-color);
+        }
+
+        .price-tag span {
+            font-size: 1rem;
+            color: var(--gray-text);
+        }
+
+        .pricing-card p {
+            color: var(--gray-text);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .plan-features {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+            color: var(--light-text);
+        }
+
+        .plan-features li {
+            margin-bottom: 0.85rem;
+            position: relative;
+            padding-left: 1.6rem;
+        }
+
+        .plan-features li::before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        .plan-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.9rem 1.5rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .plan-button:hover {
+            background-color: var(--accent-color);
+        }
+
+        .bmi-section {
+            padding: 6rem 2rem;
+            background-color: var(--dark-bg);
+        }
+
+        .bmi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .bmi-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .bmi-card h3 {
+            margin-bottom: 1rem;
+            color: var(--light-text);
+        }
+
+        .bmi-card p {
+            color: var(--gray-text);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .bmi-form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .bmi-form input {
+            width: 100%;
+            padding: 0.85rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--light-text);
+        }
+
+        .bmi-form button {
+            width: fit-content;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.95rem 1.8rem;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+        }
+
+        .bmi-form button:hover {
+            background-color: var(--accent-color);
+        }
+
+        .bmi-result {
+            margin-top: 1.5rem;
+            padding: 1rem 1.2rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            color: var(--light-text);
+        }
+
+        .bmi-result strong {
+            color: var(--primary-color);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 2rem;
+            background-color: var(--dark-bg);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-info h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--light-text);
+        }
+
+        .contact-info p {
+            color: var(--gray-text);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+
+        .contact-detail {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-detail-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            min-width: 30px;
+        }
+
+        .contact-detail-text h4 {
+            color: var(--light-text);
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-detail-text p {
+            color: var(--gray-text);
+            margin: 0;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--light-text);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--light-text);
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background-color: rgba(255, 107, 53, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .submit-button:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            text-align: center;
+            color: var(--gray-text);
+            border-top: 1px solid rgba(255, 107, 53, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 0.75rem;
+                font-size: 1rem;
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 5rem 1.5rem;
+                min-height: 450px;
+            }
+
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-actions {
+                width: 100%;
+            }
+
+            .hero-actions .cta-button,
+            .hero-actions .cta-secondary {
+                width: 100%;
+                text-align: center;
+                padding: 1rem 0;
+            }
+
+            .hero-metrics {
+                gap: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.9rem;
+            }
+
+            .services-grid,
+            .testimonials-grid,
+            .pricing-grid,
+            .bmi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .cta-button {
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 4rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            .hero-metrics {
+                gap: 0.8rem;
+            }
+
+            .hero-metrics div {
+                min-width: 100px;
+            }
+
+            .hero-actions .cta-button,
+            .hero-actions .cta-secondary {
+                padding: 1rem 0;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .contact-detail {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">FitZone</div>
+            <ul>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#bmi">BMI Calculator</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Transform Your Body, Transform Your Life</h1>
+            <p>Join thousands of fitness enthusiasts at FitZone. Expert trainers, state-of-the-art equipment, and a community that motivates you to reach your goals.</p>
+            <a href="#contact" class="cta-button">Start Your Free Trial</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Our <span>Services</span></h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏋️</div>
+                    <h3>Strength Training</h3>
+                    <p>Build muscle and increase your strength with our comprehensive strength training programs and expert guidance.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🧘</div>
+                    <h3>Yoga & Flexibility</h3>
+                    <p>Improve flexibility, reduce stress, and enhance your overall wellness through our yoga and stretching classes.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚴</div>
+                    <h3>Cardio Classes</h3>
+                    <p>High-energy cardio workouts designed to boost your endurance and help you achieve your fitness goals fast.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🥊</div>
+                    <h3>Combat Training</h3>
+                    <p>Learn self-defense techniques while getting an amazing full-body workout with our professional coaches.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">👨‍🏫</div>
+                    <h3>Personal Training</h3>
+                    <p>Get one-on-one coaching tailored to your specific goals and fitness level from our certified trainers.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🥗</div>
+                    <h3>Nutrition Coaching</h3>
+                    <p>Receive personalized nutrition guidance to complement your training and maximize your results.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Pricing <span>Plans</span></h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <div class="price-tag">$29<span>/mo</span></div>
+                    <p>Perfect for beginners who want access to our gym floor and group classes.</p>
+                    <ul class="plan-features">
+                        <li>Unlimited gym access</li>
+                        <li>5 group classes per month</li>
+                        <li>Locker room access</li>
+                    </ul>
+                    <a href="#contact" class="plan-button">Join Starter</a>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Pro</h3>
+                    <div class="price-tag">$59<span>/mo</span></div>
+                    <p>Our most popular option with personal training and nutrition support.</p>
+                    <ul class="plan-features">
+                        <li>Unlimited gym access</li>
+                        <li>Unlimited classes</li>
+                        <li>4 personal training sessions</li>
+                        <li>Nutrition consultation</li>
+                    </ul>
+                    <a href="#contact" class="plan-button">Join Pro</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Elite</h3>
+                    <div class="price-tag">$89<span>/mo</span></div>
+                    <p>Best for athletes and dedicated members seeking premium support.</p>
+                    <ul class="plan-features">
+                        <li>All Pro benefits</li>
+                        <li>Unlimited personal training</li>
+                        <li>Priority booking</li>
+                        <li>Premium recovery lounge</li>
+                    </ul>
+                    <a href="#contact" class="plan-button">Join Elite</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BMI Calculator Section -->
+    <section class="bmi-section" id="bmi">
+        <div class="container">
+            <h2 class="section-title">BMI <span>Calculator</span></h2>
+            <div class="bmi-grid">
+                <div class="bmi-card">
+                    <h3>Calculate Your BMI</h3>
+                    <p>Enter your weight and height to see your body mass index and what it means for your fitness journey.</p>
+                    <form class="bmi-form" onsubmit="calculateBMI(event)">
+                        <input type="number" id="weight" placeholder="Weight (kg)" min="1" required>
+                        <input type="number" id="height" placeholder="Height (cm)" min="100" required>
+                        <button type="submit">Check BMI</button>
+                    </form>
+                    <div class="bmi-result" id="bmi-result" aria-live="polite">Your result will appear here.</div>
+                </div>
+                <div class="bmi-card">
+                    <h3>BMI Categories</h3>
+                    <p>Use this guide to understand your BMI range and set a healthy, sustainable goal.</p>
+                    <ul class="plan-features">
+                        <li>Underweight: Less than 18.5</li>
+                        <li>Normal weight: 18.5–24.9</li>
+                        <li>Overweight: 25–29.9</li>
+                        <li>Obesity: 30 or greater</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Success <span>Stories</span></h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"FitZone changed my life! The trainers are incredibly supportive and the community atmosphere keeps me motivated every day."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JD</div>
+                        <div class="author-info">
+                            <h4>James Donovan</h4>
+                            <p>Member for 2 years</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"I've never been in better shape! The combination of classes, equipment, and personalized coaching is unmatched."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SM</div>
+                        <div class="author-info">
+                            <h4>Sarah Martinez</h4>
+                            <p>Member for 1 year</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"The best gym experience I've had. Clean facilities, friendly staff, and amazing workout programs. Highly recommended!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MK</div>
+                        <div class="author-info">
+                            <h4>Michael Khan</h4>
+                            <p>Member for 6 months</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In <span>Touch</span></h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Let's Connect</h2>
+                    <p>Ready to start your fitness journey? Contact us today to learn more about our membership options and schedule your gym tour.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <div class="contact-detail-icon">📍</div>
+                            <div class="contact-detail-text">
+                                <h4>Location</h4>
+                                <p>123 Fitness Street, Gym City, GC 12345</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <div class="contact-detail-icon">📞</div>
+                            <div class="contact-detail-text">
+                                <h4>Phone</h4>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <div class="contact-detail-icon">✉️</div>
+                            <div class="contact-detail-text">
+                                <h4>Email</h4>
+                                <p>info@fitzone.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <div class="contact-detail-icon">🕒</div>
+                            <div class="contact-detail-text">
+                                <h4>Hours</h4>
+                                <p>Mon-Fri: 6am - 10pm | Sat-Sun: 8am - 8pm</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 FitZone Gym. All rights reserved. | Transform Your Life Today</p>
+        </div>
+    </footer>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            
+            // Simple validation and feedback
+            if (name && email && message) {
+                alert(`Thank you, ${name}! We've received your message. We'll get back to you at ${email} soon.`);
+                event.target.reset();
+            } else {
+                alert('Please fill in all required fields.');
+            }
+        }
+
+        function calculateBMI(event) {
+            event.preventDefault();
+            const weight = parseFloat(document.getElementById('weight').value);
+            const heightCm = parseFloat(document.getElementById('height').value);
+            const resultNode = document.getElementById('bmi-result');
+
+            if (!weight || !heightCm || weight <= 0 || heightCm <= 0) {
+                resultNode.textContent = 'Please enter valid weight and height values.';
+                return;
+            }
+
+            const heightM = heightCm / 100;
+            const bmi = weight / (heightM * heightM);
+            const bmiRounded = bmi.toFixed(1);
+            let category = 'Normal weight';
+
+            if (bmi < 18.5) {
+                category = 'Underweight';
+            } else if (bmi < 25) {
+                category = 'Normal weight';
+            } else if (bmi < 30) {
+                category = 'Overweight';
+            } else {
+                category = 'Obesity';
+            }
+
+            resultNode.innerHTML = `Your BMI is <strong>${bmiRounded}</strong> (<strong>${category}</strong>).`;
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
